@@ -1,0 +1,13 @@
+{
+  "name": "job-service",
+  "version": "0.0.1",
+  "description": "New OCaml project",
+  "license": "MPL-2.0",
+  "scripts": { "start": "esy x job-service" },
+  "dependencies": { "ocaml": ">=4.12", "@opam/dune": "*" },
+  "devDependencies": { "@opam/ocaml-lsp-server": "1.10.3" },
+  "esy": {
+    "build": "dune build -p #{self.name}",
+    "release": { "releasedBinaries": [ "job-service" ] }
+  }
+}

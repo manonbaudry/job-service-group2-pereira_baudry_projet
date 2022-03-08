@@ -1,0 +1,6 @@
+(executable
+ (name job_app)
+ (public_name job-service)
+ (libraries job-service.lib)
+ (ocamlc_flags
+  (:standard -warn-error -a+31+8)))

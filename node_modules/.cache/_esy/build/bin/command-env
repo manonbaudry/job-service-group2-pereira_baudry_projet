@@ -1,0 +1,234 @@
+# Command environment
+
+#
+# Built-in
+#
+export ESY__ROOT_PACKAGE_CONFIG_PATH="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/package.json"
+export USER='manonbaudry'
+export GIT_ASKPASS='/private/var/folders/1n/8yp4_hr957qbm9h1tdx0h9lr0000gn/T/AppTranslocation/50AA063F-1AAD-4740-AEC2-43E24086BF33/d/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh'
+export PATH='/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/bin:/Users/manonbaudry/.nvm/versions/node/v16.13.1/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/manonbaudry/go/bin:/usr/local/go/bin:/Users/manonbaudry/.nvm/versions/node/v16.13.1/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+export LESS='-R'
+export OCAMLPATH='/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/lib:'
+export NVM_INC='/Users/manonbaudry/.nvm/versions/node/v16.13.1/include/node'
+export XPC_FLAGS='0x0'
+export CAML_LD_LIBRARY_PATH='/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/stublibs:/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/lib/stublibs:'
+export LOGNAME='manonbaudry'
+export SHLVL='1'
+export MAN_PATH='/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/man:'
+export PAGER='less'
+export NVM_CD_FLAGS='-q'
+export VSCODE_GIT_ASKPASS_MAIN='/private/var/folders/1n/8yp4_hr957qbm9h1tdx0h9lr0000gn/T/AppTranslocation/50AA063F-1AAD-4740-AEC2-43E24086BF33/d/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js'
+export NVM_BIN='/Users/manonbaudry/.nvm/versions/node/v16.13.1/bin'
+export OLDPWD='/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet'
+export _='/Users/manonbaudry/.nvm/versions/node/v16.13.1/lib/node_modules/esy/3/i/esy-cca3445f/bin/esy'
+export __CFBundleIdentifier='com.microsoft.VSCode'
+export LANG='en_GB.UTF-8'
+export HOME='/Users/manonbaudry'
+export COMMAND_MODE='unix2003'
+export COLORTERM='truecolor'
+export VSCODE_GIT_ASKPASS_NODE='/private/var/folders/1n/8yp4_hr957qbm9h1tdx0h9lr0000gn/T/AppTranslocation/50AA063F-1AAD-4740-AEC2-43E24086BF33/d/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)'
+export ORIGINAL_XDG_CURRENT_DESKTOP='undefined'
+export __CF_USER_TEXT_ENCODING='0x1F5:0x0:0x0'
+export ZSH='/Users/manonbaudry/.oh-my-zsh'
+export TERM_PROGRAM_VERSION='1.60.2'
+export SHELL='/bin/zsh'
+export LSCOLORS='Gxfxcxdxbxegedabagacad'
+export PWD='/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet'
+export SSH_AUTH_SOCK='/private/tmp/com.apple.launchd.X3Hku0AqjR/Listeners'
+export NVM_DIR='/Users/manonbaudry/.nvm'
+export TERM_PROGRAM='vscode'
+export VSCODE_GIT_IPC_HANDLE='/var/folders/1n/8yp4_hr957qbm9h1tdx0h9lr0000gn/T/vscode-git-6e23e4adc0.sock'
+export TERM='xterm-256color'
+export TMPDIR='/var/folders/1n/8yp4_hr957qbm9h1tdx0h9lr0000gn/T/'
+export XPC_SERVICE_NAME='0'
+export SHELL='/bin/zsh'
+export PATH="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/bin:$PATH"
+export cur__etc="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/etc"
+export cur__share="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/share"
+export cur__toplevel="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/toplevel"
+export cur__stublibs="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/stublibs"
+export cur__doc="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/doc"
+export cur__man="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/man"
+export cur__lib="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/lib"
+export cur__sbin="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/sbin"
+export cur__bin="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/bin"
+export cur__install="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe"
+export cur__target_dir="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/b/job_service-8ede12fe"
+export cur__original_root="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet"
+export cur__root="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet"
+export cur__dev="true"
+export cur__version="0.0.1"
+export cur__name="job-service"
+
+#
+# @opam/easy-format@opam:1.3.2@1ea9f987
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-95fb1e9f/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-95fb1e9f/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-95fb1e9f/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-95fb1e9f/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-95fb1e9f/bin:$PATH"
+
+#
+# @opam/cppo@opam:1.6.8@7e48217d
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__cppo-opam__c__1.6.8-822e5c07/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__cppo-opam__c__1.6.8-822e5c07/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__cppo-opam__c__1.6.8-822e5c07/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__cppo-opam__c__1.6.8-822e5c07/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__cppo-opam__c__1.6.8-822e5c07/bin:$PATH"
+
+#
+# @opam/biniou@opam:1.2.1@420bda02
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-9c6babba/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-9c6babba/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-9c6babba/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-9c6babba/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-9c6babba/bin:$PATH"
+
+#
+# @opam/seq@opam:base@d8d7de1d
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__seq-opam__c__base-f90170d4/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__seq-opam__c__base-f90170d4/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__seq-opam__c__base-f90170d4/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__seq-opam__c__base-f90170d4/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__seq-opam__c__base-f90170d4/bin:$PATH"
+
+#
+# @opam/sexplib0@opam:v0.14.0@155c136c
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__sexplib0-opam__c__v0.14.0-b80262bd/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__sexplib0-opam__c__v0.14.0-b80262bd/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__sexplib0-opam__c__v0.14.0-b80262bd/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__sexplib0-opam__c__v0.14.0-b80262bd/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__sexplib0-opam__c__v0.14.0-b80262bd/bin:$PATH"
+
+#
+# @opam/yojson@opam:1.7.0@69d87312
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-c10c252a/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-c10c252a/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-c10c252a/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-c10c252a/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-c10c252a/bin:$PATH"
+
+#
+# @opam/spawn@opam:v0.15.0@4a27a4cb
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__spawn-opam__c__v0.15.0-06f6719b/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__spawn-opam__c__v0.15.0-06f6719b/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__spawn-opam__c__v0.15.0-06f6719b/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__spawn-opam__c__v0.15.0-06f6719b/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__spawn-opam__c__v0.15.0-06f6719b/bin:$PATH"
+
+#
+# @opam/result@opam:1.5@1c6a6533
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__result-opam__c__1.5-f1bb5d15/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__result-opam__c__1.5-f1bb5d15/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__result-opam__c__1.5-f1bb5d15/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__result-opam__c__1.5-f1bb5d15/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__result-opam__c__1.5-f1bb5d15/bin:$PATH"
+
+#
+# @opam/re@opam:1.10.3@0585c65d
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__re-opam__c__1.10.3-5ff09d95/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__re-opam__c__1.10.3-5ff09d95/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__re-opam__c__1.10.3-5ff09d95/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__re-opam__c__1.10.3-5ff09d95/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__re-opam__c__1.10.3-5ff09d95/bin:$PATH"
+
+#
+# @opam/ppx_yojson_conv_lib@opam:v0.14.0@605a6997
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ppx__yojson__conv__lib-opam__c__v0.14.0-271ee755/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ppx__yojson__conv__lib-opam__c__v0.14.0-271ee755/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ppx__yojson__conv__lib-opam__c__v0.14.0-271ee755/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ppx__yojson__conv__lib-opam__c__v0.14.0-271ee755/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ppx__yojson__conv__lib-opam__c__v0.14.0-271ee755/bin:$PATH"
+
+#
+# @opam/pp@opam:1.1.2@89ad03b5
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__pp-opam__c__1.1.2-35bdc208/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__pp-opam__c__1.1.2-35bdc208/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__pp-opam__c__1.1.2-35bdc208/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__pp-opam__c__1.1.2-35bdc208/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__pp-opam__c__1.1.2-35bdc208/bin:$PATH"
+
+#
+# @opam/ocamlformat-rpc-lib@opam:0.19.0@125cf11d
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocamlformat_rpc_lib-opam__c__0.19.0-5dd2d9c6/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocamlformat_rpc_lib-opam__c__0.19.0-5dd2d9c6/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocamlformat_rpc_lib-opam__c__0.19.0-5dd2d9c6/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocamlformat_rpc_lib-opam__c__0.19.0-5dd2d9c6/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocamlformat_rpc_lib-opam__c__0.19.0-5dd2d9c6/bin:$PATH"
+
+#
+# @opam/dune-build-info@opam:3.0.3@771c0f2f
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune_build_info-opam__c__3.0.3-f919d1af/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune_build_info-opam__c__3.0.3-f919d1af/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune_build_info-opam__c__3.0.3-f919d1af/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune_build_info-opam__c__3.0.3-f919d1af/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune_build_info-opam__c__3.0.3-f919d1af/bin:$PATH"
+
+#
+# @opam/csexp@opam:1.5.1@8a8fb3a7
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__csexp-opam__c__1.5.1-307a464a/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__csexp-opam__c__1.5.1-307a464a/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__csexp-opam__c__1.5.1-307a464a/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__csexp-opam__c__1.5.1-307a464a/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__csexp-opam__c__1.5.1-307a464a/bin:$PATH"
+
+#
+# @opam/base-unix@opam:base@87d0b2eb
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_unix-opam__c__base-b5812a5c/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_unix-opam__c__base-b5812a5c/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_unix-opam__c__base-b5812a5c/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_unix-opam__c__base-b5812a5c/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_unix-opam__c__base-b5812a5c/bin:$PATH"
+
+#
+# @opam/base-threads@opam:base@36803084
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_threads-opam__c__base-beddf47d/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_threads-opam__c__base-beddf47d/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_threads-opam__c__base-beddf47d/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_threads-opam__c__base-beddf47d/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__base_threads-opam__c__base-beddf47d/bin:$PATH"
+
+#
+# @esy-ocaml/substs@0.0.1@d41d8cd9
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/esy_ocaml__s__substs-0.0.1-dcea4195/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/esy_ocaml__s__substs-0.0.1-dcea4195/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/esy_ocaml__s__substs-0.0.1-dcea4195/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/esy_ocaml__s__substs-0.0.1-dcea4195/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/esy_ocaml__s__substs-0.0.1-dcea4195/bin:$PATH"
+
+#
+# ocaml@4.13.1000@d41d8cd9
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/lib/ocaml/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/lib/ocaml:$CAML_LD_LIBRARY_PATH"
+export OCAMLLIB="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/lib/ocaml"
+export OCAML_TOPLEVEL_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/lib/ocaml"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/ocaml-4.13.1000-8a7a040f/bin:$PATH"
+
+#
+# @opam/ocaml-lsp-server@opam:1.10.3@c6767d5c
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocaml_lsp_server-opam__c__1.10.3-18e80e45/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocaml_lsp_server-opam__c__1.10.3-18e80e45/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocaml_lsp_server-opam__c__1.10.3-18e80e45/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocaml_lsp_server-opam__c__1.10.3-18e80e45/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__ocaml_lsp_server-opam__c__1.10.3-18e80e45/bin:$PATH"
+
+#
+# @opam/dune@opam:3.0.3@2d9f4d6b
+#
+export CAML_LD_LIBRARY_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune-opam__c__3.0.3-a51bb525/stublibs:/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune-opam__c__3.0.3-a51bb525/lib/stublibs:$CAML_LD_LIBRARY_PATH"
+export OCAMLPATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune-opam__c__3.0.3-a51bb525/lib:$OCAMLPATH"
+export MAN_PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune-opam__c__3.0.3-a51bb525/man:$MAN_PATH"
+export PATH="/Users/manonbaudry/.esy/3____________________________________________________________/i/opam__s__dune-opam__c__3.0.3-a51bb525/bin:$PATH"
+
+#
+# Built-in
+#
+export OCAMLFIND_LDCONF="ignore"
+export OCAMLFIND_DESTDIR="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/i/job_service-8ede12fe/lib"
+export DUNE_BUILD_DIR="/Users/manonbaudry/git/job-service-group2-pereira_baudry_projet/_esy/default/store/b/job_service-8ede12fe"
+export DUNE_STORE_ORIG_SOURCE_DIR="true"
+export SHELL="env -i /bin/bash --norc --noprofile"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export SHELL="/bin/zsh"

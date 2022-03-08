@@ -1,0 +1,9 @@
+package "lib" (
+  directory = "lib"
+  description = ""
+  requires = ""
+  archive(byte) = "job_service.cma"
+  archive(native) = "job_service.cmxa"
+  plugin(byte) = "job_service.cma"
+  plugin(native) = "job_service.cmxs"
+)
