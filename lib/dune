@@ -1,5 +1,14 @@
 (library
- (name job_service)
- (public_name job-service.lib)
- (ocamlc_flags
-  (:standard -warn-error -a+31+8)))
+ (name job_lib)
+ (public_name job.lib)
+ (libraries
+  dream
+  lwt
+  safepass
+  emile
+  uuidm
+  ppx_rapper_lwt
+  caqti-driver-sqlite3
+  jwto)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.make ppx_rapper)))

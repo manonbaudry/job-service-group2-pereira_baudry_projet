@@ -1,2 +1,3 @@
-(lang dune 2.9)
- (name job-service)
+(lang dune 3.0)
+
+(name job)
