@@ -1,0 +1,22 @@
+(** @canonical Job_lib.Api *)
+module Api = Job_lib__Api
+
+
+(** @canonical Job_lib.Domain *)
+module Domain = Job_lib__Domain
+
+
+(** @canonical Job_lib.Infra *)
+module Infra = Job_lib__Infra
+
+
+(** @canonical Job_lib.Repository *)
+module Repository = Job_lib__Repository
+
+
+(** @canonical Job_lib.Service *)
+module Service = Job_lib__Service
+
+
+(** @canonical Job_lib.Util *)
+module Util = Job_lib__Util
