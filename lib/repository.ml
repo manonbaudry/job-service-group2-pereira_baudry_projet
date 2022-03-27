@@ -5,7 +5,7 @@
 module E = Infra.Environment
 module D = Domain
       
-module type Job = sig
+module type JOB = sig
   type ('res, 'err) query_result =
     ('res, ([> Caqti_error.call_or_retrieve] as 'err)) result Lwt.t
     
@@ -16,16 +16,33 @@ module type Job = sig
 
   val create :
     id:D.Uuid.t ->
-    email:D.Email.t ->
-    hash:D.Hash.t ->
+    title: string ->
+    description: string ->
+    company: string ->
+    job_description: string ->
+    company_description: string ->
+    created_at: string ->
+    end_date: string ->
+    contact_email: D.Email.t ->
+    contract_type: string ->
+    duration: int ->
+    ranking: float ->
     (module Rapper_helper.CONNECTION) ->
     (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
 
   val update :
-    email:D.Email.t ->
-    username:string option ->
-    hash:D.Hash.t ->
     id:D.Uuid.t ->
+    title: string ->
+    description: string ->
+    company: string ->
+    job_description: string ->
+    company_description: string ->
+    created_at: string ->
+    end_date: string ->
+    contact_email: D.Email.t ->
+    contract_type: string ->
+    duration: int ->
+    ranking: float ->
     (module Rapper_helper.CONNECTION) ->
     (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
       
@@ -75,7 +92,7 @@ module Job : JOB = struct
           {sql| 
             SELECT @Uuid{id}, @string{title}, @string{description}, @string{company}, @string{job_description}, 
               @string{company_description}, @string{created_at}, @string{end_date}, @Email{contact_email},
-              @string{contract_type}, @int{duration}, @float{ranking}
+              @string{contract_type}, @int{duration}, @float{ranking}, @bool{is_deleted}
             FROM "Job" 
             WHERE id = %Uuid{id}
           |sql} 

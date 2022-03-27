@@ -22,27 +22,6 @@ let echo_handler request =
   | Some token ->
     Dream.json ~status:`OK @@ to_string @@ `Assoc [("token", `String token)]
 
-(** Singnup route *)
-let signup_handler request =
-  let () = info "Call signup_handler" in
-  let open Yojson.Safe.Util in
-  let open LwtSyntax in
-  let* body = Dream.body request in
-  let json_res =
-    try Ok (Yojson.Safe.from_string body) with
-    | Failure _ -> Error "Invaild JSON Body" in
-  match json_res with
-  | Error e -> Dream.json ~status:`Bad_Request e
-  | Ok json -> (
-    let email = json |> member "email" |> to_string
-    and password = json |> member "password" |> to_string in
-    let* signup_result =
-      Dream.sql request @@ JobService.signup ~email ~password in
-    match signup_result with
-    | Error e -> Dream.json ~status:`Forbidden e
-    | Ok _ -> Dream.json ~status:`Created "")
-      
-       
 
 (* verify route *)
 let verify_handler request =
@@ -134,10 +113,16 @@ let update_handler request =
       match json_res with
       | Error e -> Dream.json ~status:`Bad_Request e
       | Ok json ->
-        let email = json |> member "email" |> to_string
-        and password = json |> member "password" |> to_string 
-        and username = json |> member "username" |> to_string_option in
-        let* update_result = Dream.sql request @@ JobService.update ~id ~email ~username ~password  in
+        let title = json |> job "title" |> to_string
+        and description  = json |> job "description" |> to_string
+        and company = json |> job "company" |> to_string 
+        and job_description = json |> job "job_description" |> to_string 
+        and company_description = json |> job "company_description" |> to_string 
+        and end_date = json |> job "end_date" |> to_string 
+        and contact_email = json |> job "contact_email" |> to_string  
+        and contract_type = json |> job "contract_type" |> to_string  
+        and duration = json |> job "duration" |> to_string in
+        let* update_result = Dream.sql request @@ JobService.update ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration in
         match update_result with
         | Error e -> Dream.json ~status:`Forbidden e
         | Ok _ -> Dream.json ~status:`OK ""
@@ -166,12 +151,9 @@ let routes =
   [
     Dream.get "/" hello_handler;
     Dream.get "/echo" echo_handler;
+    Dream.post "/verify" verify_handler;
     Dream.post "/job/create" signup_handler;
     Dream.get "/job/:id" get_by_id_handler;
+    Dream.put "/job/:id" update_handler;
     Dream.delete "/job/:id" delete_handler;
-
-    Dream.post "/signup" signup_handler;
-    Dream.post "/signin" signin_handler;
-    Dream.post "/verify" verify_handler;
-    Dream.put "/member/:id" update_handler;
   ]      

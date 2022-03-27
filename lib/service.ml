@@ -31,17 +31,6 @@ end
       
       
 module Job (JobRepository : Repository.JOB) = struct
-  let signup ~email ~password connection =
-    let id = D.Uuid.v4_gen E.random_seed () in
-    let hash = D.Hash.make ~seed:E.hash_seed password in
-    match D.Email.make email with
-    | Error e -> Lwt.return_error @@ "Invalid email: " ^ email
-    | Ok member_email -> (
-      let open Lwt in
-      MemberRepository.create ~id ~hash ~email:member_email connection
-      >>= function
-      | Ok db_result -> Lwt.return_ok ()
-      | Error _ -> Lwt.return_error "Unable to create")
   
   let create ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
     match D.Email.make contact_email with
@@ -49,11 +38,12 @@ module Job (JobRepository : Repository.JOB) = struct
     | Ok email ->
       let open Lwt in
       let id = D.Uuid.v4_gen E.random_seed () in
-      JobRepository.create ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration
+      JobRepository.create ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration connection
       >>= function
       | Ok db_result -> Lwt.return_ok ()
-      | Error _ -> Lwt.return_error "Unable to update the member"
+      | Error _ -> Lwt.return_error "Unable to create the job offer"
 
+      
   let get_by_id ~id connection =
     match D.Uuid.make id with
     | Error e -> Lwt.return_error @@ "Invalid id: " ^ id
@@ -65,19 +55,18 @@ module Job (JobRepository : Repository.JOB) = struct
       | Error _ -> Lwt.return_error "Unable to retrive a job from this id"
       
       
-  let update ~id ~email ~username ~password connection =
-    let hash = D.Hash.make ~seed:E.hash_seed password in
-    match D.Email.make email with
+  let update ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
+    match D.Email.make contact_email with
     | Error e -> Lwt.return_error @@ "Invalid email: " ^ email
-    | Ok member_email ->
+    | Ok email ->
       match D.Uuid.make id with
       | Error e -> Lwt.return_error @@ "Invalid id: " ^ id
-      | Ok member_id ->
+      | Ok job_id ->
         let open Lwt in
-        MemberRepository.update ~id:member_id ~email:member_email ~username ~hash connection
+        JobRepository.update ~id:job_id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration connection
         >>= function
         | Ok db_result -> Lwt.return_ok ()
-        | Error _ -> Lwt.return_error "Unable to update the member"
+        | Error _ -> Lwt.return_error "Unable to update the job"
         
           
   let delete ~id connection =
