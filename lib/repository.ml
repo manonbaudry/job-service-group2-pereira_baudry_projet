@@ -2,23 +2,18 @@
       v. 2.0. If a copy of the MPL was not distributed with this file, You can
       obtain one at https://mozilla.org/MPL/2.0/ *)
 
+      (*todo remove member*)
       module E = Infra.Environment
       module D = Domain
       
-      module type MEMBER = sig
+      module type Job = sig
         type ('res, 'err) query_result =
           ('res, ([> Caqti_error.call_or_retrieve] as 'err)) result Lwt.t
-      
-        val get_by_email_hash :
-          email:D.Email.t ->
-          hash:D.Hash.t ->
-          (module Rapper_helper.CONNECTION) ->
-          (D.Member.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
-      
+    
         val get_by_id :
         id:D.Uuid.t ->
         (module Rapper_helper.CONNECTION) ->
-        (D.Member.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
+        (D.Job.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
       
         val create :
           id:D.Uuid.t ->
@@ -41,7 +36,7 @@
           (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
       end
       
-      module Member : MEMBER = struct
+      module Job : JOB = struct
         module Uuid = struct
           type t = D.Uuid.t
       
@@ -74,24 +69,15 @@
         type ('res, 'err) query_result =
           ('res, ([> Caqti_error.call_or_retrieve] as 'err)) result Lwt.t
       
-        let get_by_email_hash_query =
-          let open D.Member in
-          [%rapper
-            get_one
-              {sql| 
-                SELECT @Uuid{id}, @string?{username}, @Email{email},
-                @Hash{hash} FROM "Member" WHERE email = %Email{email} AND hash =
-                %Hash{hash}
-                |sql}
-              record_out]
-      
           let get_by_id_query =
-            let open D.Member in
+            let open D.Job in
             [%rapper
               get_one
                 {sql| 
-                  SELECT @Uuid{id}, @string?{username}, @Email{email}, @Hash{hash} 
-                  FROM "Member" 
+                  SELECT @Uuid{id}, @string{title}, @string{description}, @string{company}, @string{job_description}, 
+                  @string{company_description}, @string{created_at}, @string{end_date}, @Email{contact_email},
+                  @string{contract_type}, @int{duration}, @float{ranking}
+                  FROM "Job" 
                   WHERE id = %Uuid{id}
                 |sql} 
                 record_out]
@@ -100,23 +86,31 @@
           [%rapper
             execute
               {sql|
-                INSERT INTO "Member" (id, email, hash) VALUES  (%Uuid{id}, %Email{email}, %Hash{hash})
+                INSERT INTO "Job" (id, title, description, company, job_description, company_description, 
+                created_at, end_date, contact_email, contract_type, duration, ranking, is_deleted) 
+                VALUES  (%Uuid{id}, %string{title}, %string{description}, %string{company}, %string{job_description}, 
+                %string{company_description}, %string{created_at}, %string{end_date}, %Email{contact_email},
+                %string{contract_type}, %int{duration}, %float{ranking}, FALSE)
                 |sql}]
       
         let update_query =
           [%rapper
             execute
               {sql|
-                UPDATE "Member"
-                SET (email, username, hash) = (%Email{email}, %string?{username}, %Hash{hash})
+                UPDATE "Job"
+                SET (title, description, company, job_description, company_description, 
+                created_at, end_date, contact_email, contract_type, duration, ranking) = 
+                (%Uuid{id}, %string{title}, %string{description}, %string{company}, %string{job_description}, 
+                %string{company_description}, %string{created_at}, %string{end_date}, %Email{contact_email},
+                %string{contract_type}, %int{duration}, %float{ranking})
                 WHERE id = %Uuid{id}
-                |sql}]
+              |sql}]
       
         let delete_query =
-          let open D.Member in
+          let open D.Job in
           [%rapper
             execute
-              {sql| DELETE FROM "Member" WHERE id = %Uuid{id} |sql}]
+              {sql| UPDATE "Job" SET (is_deleted) = TRUE WHERE id = %Uuid{id} |sql}]
       
       
         let get_by_email_hash = get_by_email_hash_query

@@ -1,7 +1,3 @@
-(* This Source Code Form is subject to the terms of the Mozilla Public License,
-   v. 2.0. If a copy of the MPL was not distributed with this file, You can
-   obtain one at https://mozilla.org/MPL/2.0/ *)
-
 module Email : sig
   exception Invalid_email
 
@@ -94,7 +90,6 @@ end = struct
 end
 
 
-
 module Job : sig
   type t = {
     id : Uuid.t;
@@ -103,35 +98,58 @@ module Job : sig
     company : string;
     job_description : string;
     company_description : string;
-    created_at : DATE,
-    end_at :DATE,
-    contact_email :TEXT,
-    job_type : string;
+    created_at : string;
+    end_date : string;
+    contact_email : Email.t;
+    contract_type : string;
     duration : int; 
     is_deleted : bool;
-    ranking : float;
-
-
-    email : Email.t;
-    hash : Hash.t;
+    ranking : float option;
   }
   [@@deriving make, show]
 
   val id : t -> Uuid.t
-  val username : t -> string option
-  val email : t -> Email.t
-  val hash : t -> Hash.t
+  val title : t -> string
+  val description : t -> string
+  val company : t -> string
+  val job_description : t -> string
+  val company_description : t -> string
+  val created_at : t -> string
+  val end_date : t -> string
+  val contact_email : t -> Email.t
+  val contract_type : t -> string
+  val duration : t -> int
+  val is_deleted : t -> bool
+  val ranking : t -> float option
 end = struct
   type t = {
     id : Uuid.t;
-    username : string option;
-    email : Email.t;
-    hash : Hash.t;
+    title : string;
+    description : string;
+    company : string;
+    job_description : string;
+    company_description : string;
+    created_at : string;
+    end_date : string;
+    contact_email : Email.t;
+    contract_type : string;
+    duration : int; 
+    is_deleted : bool;
+    ranking : float option;
   }
   [@@deriving make, show]
 
   let id member = member.id
-  let username member = member.username
-  let email member = member.email
-  let hash member = member.hash
+  let title member = member.title
+  let description member = member.description
+  let company member = member.company
+  let job_description member = member.job_description
+  let company_description member = member.company_description
+  let created_at member = member.created_at
+  let end_date member = member.end_date
+  let contact_email member = member.contact_email
+  let contract_type member = member.contract_type
+  let duration member = member.duration
+  let is_deleted  member = member.is_deleted
+  let ranking member = member.ranking
 end

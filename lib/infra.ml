@@ -21,7 +21,7 @@ module Environment = struct
         Log.warn
           "APP_NAME environment variable is not set, fallback default value"
       in
-      "auth.miage.rocks"
+      "job.miage.rocks"
 
   let port =
     try Unix.getenv "PORT" |> int_of_string with
@@ -52,56 +52,8 @@ module Environment = struct
           "JWT_SECRET environment variable is not set, fallback default value \
            - USE ONLY FOR DEV" in
       "So Long and Thanks For All The Fish"
-  (*
-     let db_url =
-       try Unix.getenv "POSTGRESQL_ADDON_HOST" with
-       | Not_found ->
-         let () =
-           Log.warn
-             "POSTGRESQL_ADDON_HOST environment variable is not set, fallback to \
-              localhost - USE ONLY FOR DEV" in
-         "127.0.0.1"
 
-     let db_name =
-       try Unix.getenv "POSTGRESQL_ADDON_DB" with
-       | Not_found ->
-         let () =
-           Log.warn
-             "POSTGRESQL_ADDON_DB environment variable is not set fallback to \
-              authdb - USE ONLY FOR DEV" in
-         "authdb"
-
-     let db_port =
-       try Unix.getenv "POSTGRESQL_ADDON_PORT" with
-       | Not_found ->
-         let () =
-           Log.warn
-             "POSTGRESQL_ADDON_PORT environment variable is not set fallback to \
-              5432 - USE ONLY FOR DEV" in
-         "5432"
-
-     let db_user =
-       try Unix.getenv "POSTGRESQL_ADDON_USER" with
-       | Not_found ->
-         let () =
-           Log.warn
-             "POSTGRESQL_ADDON_USER environment variable is not set fallback to \
-              postgres - USE ONLY FOR DEV" in
-         "postgres"
-
-     let db_password =
-       try Unix.getenv "POSTGRESQL_ADDON_PASSWORD" with
-       | Not_found ->
-         let () =
-           Log.warn
-             "POSTGRESQL_ADDON_PASSWORD environment variable is not set, fallback \
-              to empty - USE ONLY FOR DEV" in
-         "" *)
-
-  let db_uri = "sqlite3:auth.db"
-  (* "postgresql://uqlbc7fqmjjpsqxfresu:hW67hTX5NDujwUAJHfRU@mydb.com:5432/b92juhe84uugdnpozzda" *)
-  (* Printf.sprintf "postgresql://%s:%s@%s:%s/%s" db_user db_password db_url
-     db_port db_name *)
+  let db_uri = "sqlite3:job.db"
 
   let log_level =
     let fallback_to_debug () =

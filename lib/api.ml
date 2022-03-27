@@ -4,7 +4,7 @@
 open Infra.Log
 open Util
       
-module MemberServive = Service.Member (Repository.Member)
+module JobServive = Service.Job (Repository.Job)
 module JwtService = Service.Jwt
       
 (** Heartbeat route *)
@@ -64,7 +64,8 @@ let signin_handler request =
     | Ok jwt -> Dream.json ~status:`OK jwt)
       
       
-(* verify route *)
+
+    (* verify route *)
 let verify_handler request =
   let () = debug "Call verify_handler" in
   let open Yojson.Safe.Util in
@@ -96,10 +97,10 @@ let get_by_id_handler request =
     | Error e -> Dream.json ~status:`Forbidden e
     | Ok _ ->
       let id = Dream.param request "id" in
-      let* get_by_id_result = Dream.sql request @@ MemberServive.get_by_id ~id in
+      let* get_by_id_result = Dream.sql request @@ JobServive.get_by_id ~id in
       match get_by_id_result with
       | Error e -> Dream.json ~status:`Forbidden e
-      | Ok member -> Dream.json ~status:`OK member
+      | Ok job -> Dream.json ~status:`OK job
       
       
 (** update member route *)
@@ -153,10 +154,11 @@ let routes =
   [
     Dream.get "/" hello_handler;
     Dream.get "/echo" echo_handler;
+    Dream.get "/job/:id" get_by_id_handler;
+
     Dream.post "/signup" signup_handler;
     Dream.post "/signin" signin_handler;
     Dream.post "/verify" verify_handler;
-    Dream.get "/member/:id" get_by_id_handler;
     Dream.put "/member/:id" update_handler;
     Dream.delete "/member/:id" delete_handler;
   ]      
