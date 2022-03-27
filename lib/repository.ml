@@ -37,7 +37,6 @@ module type JOB = sig
     company: string ->
     job_description: string ->
     company_description: string ->
-    created_at: string ->
     end_date: string ->
     contact_email: D.Email.t ->
     contract_type: string ->
@@ -115,9 +114,9 @@ module Job : JOB = struct
           {sql|
             UPDATE "Job"
             SET (title, description, company, job_description, company_description, 
-              created_at, end_date, contact_email, contract_type, duration, ranking) = 
+              end_date, contact_email, contract_type, duration, ranking) = 
               (%Uuid{id}, %string{title}, %string{description}, %string{company}, %string{job_description}, 
-              %string{company_description}, %string{created_at}, %string{end_date}, %Email{contact_email},
+              %string{company_description}, %string{end_date}, %Email{contact_email},
               %string{contract_type}, %int{duration}, %float{ranking})
             WHERE id = %Uuid{id}
           |sql}]

@@ -139,17 +139,17 @@ end = struct
   }
   [@@deriving make, show]
 
-  let id member = member.id
-  let title member = member.title
-  let description member = member.description
-  let company member = member.company
-  let job_description member = member.job_description
-  let company_description member = member.company_description
-  let created_at member = member.created_at
-  let end_date member = member.end_date
-  let contact_email member = member.contact_email
-  let contract_type member = member.contract_type
-  let duration member = member.duration
-  let is_deleted  member = member.is_deleted
-  let ranking member = member.ranking
+  let id job = job.id
+  let title job = job.title
+  let description job = job.description
+  let company job = job.company
+  let job_description job = job.job_description
+  let company_description job = job.company_description
+  let created_at job = job.created_at
+  let end_date job = job.end_date
+  let contact_email job = job.contact_email
+  let contract_type job = job.contract_type
+  let duration job = job.duration
+  let is_deleted  job = job.is_deleted
+  let ranking job = job.ranking
 end
