@@ -42,8 +42,18 @@ module Job (JobRepository : Repository.JOB) = struct
       >>= function
       | Ok db_result -> Lwt.return_ok ()
       | Error _ -> Lwt.return_error "Unable to create")
-      
-      
+  
+  let create ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
+    match D.Email.make contact_email with
+    | Error e -> Lwt.return_error @@ "Invalid email: " ^ contact_email
+    | Ok email ->
+      let open Lwt in
+      let id = D.Uuid.v4_gen E.random_seed () in
+      JobRepository.create ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration
+      >>= function
+      | Ok db_result -> Lwt.return_ok ()
+      | Error _ -> Lwt.return_error "Unable to update the member"
+
   let get_by_id ~id connection =
     match D.Uuid.make id with
     | Error e -> Lwt.return_error @@ "Invalid id: " ^ id
