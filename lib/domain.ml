@@ -92,3 +92,46 @@ end = struct
   let email member = member.email
   let hash member = member.hash
 end
+
+
+
+module Job : sig
+  type t = {
+    id : Uuid.t;
+    title : string;
+    description : string;
+    company : string;
+    job_description : string;
+    company_description : string;
+    created_at : DATE,
+    end_at :DATE,
+    contact_email :TEXT,
+    job_type : string;
+    duration : int; 
+    is_deleted : bool;
+    ranking : float;
+
+
+    email : Email.t;
+    hash : Hash.t;
+  }
+  [@@deriving make, show]
+
+  val id : t -> Uuid.t
+  val username : t -> string option
+  val email : t -> Email.t
+  val hash : t -> Hash.t
+end = struct
+  type t = {
+    id : Uuid.t;
+    username : string option;
+    email : Email.t;
+    hash : Hash.t;
+  }
+  [@@deriving make, show]
+
+  let id member = member.id
+  let username member = member.username
+  let email member = member.email
+  let hash member = member.hash
+end

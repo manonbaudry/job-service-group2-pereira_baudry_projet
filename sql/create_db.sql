@@ -1,7 +1,15 @@
-CREATE TABLE "Member"
+CREATE TABLE "Job"
 (
     id UUID PRIMARY KEY NOT NULL,
-    email TEXT NOT NULL UNIQUE,
-    hash TEXT NOT NULL,
-    username TEXT
+    title TEXT,
+    company TEXT,
+    job_description TEXT,
+    company_description TEXT,
+    created_at DATE,
+    end_at DATE,
+    contact_email TEXT,
+    job_type TEXT,
+    duration NUMBER, 
+    is_deleted BOOLEAN,
+    ranking NUMBER
 )
