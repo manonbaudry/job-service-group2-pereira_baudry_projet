@@ -104,7 +104,7 @@ module Job : sig
     contract_type : string;
     duration : int; 
     is_deleted : bool;
-    ranking : float option;
+    ranking : float;
   }
   [@@deriving make, show]
 
@@ -120,7 +120,7 @@ module Job : sig
   val contract_type : t -> string
   val duration : t -> int
   val is_deleted : t -> bool
-  val ranking : t -> float option
+  val ranking : t -> float
 end = struct
   type t = {
     id : Uuid.t;
@@ -135,7 +135,7 @@ end = struct
     contract_type : string;
     duration : int; 
     is_deleted : bool;
-    ranking : float option;
+    ranking : float;
   }
   [@@deriving make, show]
 

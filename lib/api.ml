@@ -37,35 +37,14 @@ let signup_handler request =
     let email = json |> member "email" |> to_string
     and password = json |> member "password" |> to_string in
     let* signup_result =
-      Dream.sql request @@ MemberServive.signup ~email ~password in
+      Dream.sql request @@ JobService.signup ~email ~password in
     match signup_result with
     | Error e -> Dream.json ~status:`Forbidden e
     | Ok _ -> Dream.json ~status:`Created "")
       
-      
-(** Singnin route *)
-let signin_handler request =
-  let () = debug "Call signin_handler" in
-  let open Yojson.Safe.Util in
-  let open LwtSyntax in
-  let* body = Dream.body request in
-  let json_res =
-    try Ok (Yojson.Safe.from_string body) with
-    | Failure _ -> Error "Invalid JSON Body" in
-  match json_res with
-  | Error e -> Dream.json ~status:`Bad_Request e
-  | Ok json -> (
-    let email = json |> member "email" |> to_string
-    and password = json |> member "password" |> to_string in
-    let* signin_result =
-      Dream.sql request @@ MemberServive.signin ~email ~password in
-    match signin_result with
-    | Error e -> Dream.json ~status:`Forbidden e
-    | Ok jwt -> Dream.json ~status:`OK jwt)
-      
-      
+       
 
-    (* verify route *)
+(* verify route *)
 let verify_handler request =
   let () = debug "Call verify_handler" in
   let open Yojson.Safe.Util in
@@ -77,14 +56,47 @@ let verify_handler request =
   match json_res with
   | Error e -> Dream.json ~status:`Bad_Request e
   | Ok json ->
-    let token = json |> member "jwt" |> to_string in
+    let token = json |> job "jwt" |> to_string in
     let verify_result = JwtService.verify_and_get_iss token in
     match verify_result with
     | Error e -> Dream.json ~status:`Forbidden e
     | Ok _ -> Dream.json ~status:`OK ""
+ 
+    
+(** create job route *)
+let create_handler request =
+  let () = debug "Call create_handler" in
+  let open Yojson.Safe.Util in
+  let open LwtSyntax in
+  match Dream.header request "Authorization" with
+  | None -> Dream.json ~status:`Bad_Request "Authorization header required"
+  | Some token ->
+    let verify_result = JwtService.verify_and_get_iss token in
+    match verify_result with
+    | Error e -> Dream.json ~status:`Forbidden e
+    | Ok _ ->
+      let* body = Dream.body request in
+      let json_res = try Ok (Yojson.Safe.from_string body) with
+      | Failure _ -> Error "Invalid JSON Body" in
+      match json_res with
+      | Error e -> Dream.json ~status:`Bad_Request e
+      | Ok json ->
+        let title = json |> job "title" |> to_string
+        and description  = json |> job "description" |> to_string
+        and company = json |> job "company" |> to_string 
+        and job_description = json |> job "job_description" |> to_string 
+        and company_description = json |> job "company_description" |> to_string 
+        and end_date = json |> job "end_date" |> to_string 
+        and contact_email = json |> job "contact_email" |> to_string  
+        and contract_type = json |> job "contract_type" |> to_string  
+        and duration = json |> job "duration" |> to_string in
+        let* update_result = 
+          Dream.sql request @@ JobService.create ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration in
+        match update_result with
+        | Error e -> Dream.json ~status:`Forbidden e
+        | Ok _ -> Dream.json ~status:`OK ""
       
-      
-(** get member by id route *)
+(** get job by id route *)
 let get_by_id_handler request =
   let () = debug "Call get_by_id_handler" in
   let open Yojson.Safe in
@@ -103,7 +115,7 @@ let get_by_id_handler request =
       | Ok job -> Dream.json ~status:`OK job
       
       
-(** update member route *)
+(** update job route *)
 let update_handler request =
   let () = debug "Call update_handler" in
   let open Yojson.Safe.Util in
@@ -125,13 +137,13 @@ let update_handler request =
         let email = json |> member "email" |> to_string
         and password = json |> member "password" |> to_string 
         and username = json |> member "username" |> to_string_option in
-        let* update_result = Dream.sql request @@ MemberServive.update ~id ~email ~username ~password  in
+        let* update_result = Dream.sql request @@ JobService.update ~id ~email ~username ~password  in
         match update_result with
         | Error e -> Dream.json ~status:`Forbidden e
         | Ok _ -> Dream.json ~status:`OK ""
       
       
-(** delete member route *)
+(** delete job route *)
 let delete_handler request =
   let () = debug "Call delete_handler" in
   let open Yojson.Safe in
@@ -144,7 +156,7 @@ let delete_handler request =
     | Error e -> Dream.json ~status:`Forbidden e
     | Ok _ ->
       let id = Dream.param request "id" in
-      let* delete_result = Dream.sql request @@ MemberServive.delete ~id  in
+      let* delete_result = Dream.sql request @@ JobServive.delete ~id  in
       match delete_result with
       | Error e -> Dream.json ~status:`Forbidden e
       | Ok _ -> Dream.json ~status:`OK ""
@@ -154,11 +166,12 @@ let routes =
   [
     Dream.get "/" hello_handler;
     Dream.get "/echo" echo_handler;
+    Dream.post "/job/create" signup_handler;
     Dream.get "/job/:id" get_by_id_handler;
+    Dream.delete "/job/:id" delete_handler;
 
     Dream.post "/signup" signup_handler;
     Dream.post "/signin" signin_handler;
     Dream.post "/verify" verify_handler;
     Dream.put "/member/:id" update_handler;
-    Dream.delete "/member/:id" delete_handler;
   ]      

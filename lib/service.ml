@@ -27,17 +27,6 @@ module Jwt = struct
       Error "Invalid token"
       
   let days_to_timestamp x = x *. 86400.
-      
-  let from_member member =
-    let payload =
-      let iat = Unix.time () in
-        [
-          ("sub", D.Member.id member |> D.Uuid.show);
-          ("iss", E.app_name);
-          ("iat", iat |> int_of_float |> string_of_int);
-          ("exp", iat +. days_to_timestamp 3. |> int_of_float |> string_of_int);
-        ] in
-        Jwto.encode Jwto.HS512 E.jwt_secret payload
 end
       
       
@@ -53,7 +42,6 @@ module Job (JobRepository : Repository.JOB) = struct
       >>= function
       | Ok db_result -> Lwt.return_ok ()
       | Error _ -> Lwt.return_error "Unable to create")
-      
       
       
   let get_by_id ~id connection =
