@@ -27,7 +27,7 @@ let create_handler request =
     match !Rabbit.client with
     | None ->  Dream.json ~status:`Bad_Request "Connection error with authentication-service"
     | Some c -> 
-      let* message = (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"authQueue" ~headers:[] ( token |> Message.make )) in
+      let* message = (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"auth-job" ~headers:[] ( token |> Message.make )) in
       match message with 
       | None -> Dream.json ~status:`Forbidden ""
       | Some (content, role) -> 
@@ -69,7 +69,7 @@ let get_by_id_handler request =
     match !Rabbit.client with
     | None ->  Dream.json ~status:`Bad_Request "Connection error with authentication-service"
     | Some c -> 
-      let* message = (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"authQueue" ~headers:[] ( token |> Message.make )) in
+      let* message = (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"auth-job" ~headers:[] ( token |> Message.make )) in
       match message with 
       | None -> Dream.json ~status:`Forbidden ""
       | Some (content, role) -> 
@@ -108,7 +108,7 @@ let update_handler request =
     | None ->  Dream.json ~status:`Bad_Request "Connection error with authentication-service"
     | Some c -> 
       let* message = 
-        (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"authQueue" ~headers:[] ( token |> Message.make )) in
+        (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"auth-job" ~headers:[] ( token |> Message.make )) in
       match message with 
       | None -> Dream.json ~status:`Forbidden ""
       | Some (content, role) -> 
@@ -151,7 +151,7 @@ let delete_handler request =
     | None ->  Dream.json ~status:`Bad_Request "Connection error with authentication-service"
     | Some c -> 
       let* message = 
-        (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"authQueue" ~headers:[] ( token |> Message.make )) in
+        (Rpc.Client.call c Exchange.default ~ttl:500 ~routing_key:"auth-job" ~headers:[] ( token |> Message.make )) in
       match message with 
       | None -> Dream.json ~status:`Forbidden ""
       | Some (content, role) -> 
