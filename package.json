@@ -18,7 +18,9 @@
         "@opam/jwto": "*",
         "@opam/safepass": "*",
         "@opam/yojson": "*",
-        "@opam/uuidm": "0.9.7"
+        "@opam/uuidm": "0.9.7",
+        "@opam/amqp-client-lwt": "2.2.2",
+        "@opam/ppx_yojson_conv": "v0.14.0"
     },
     "devDependencies": {
         "@opam/dune": "*",
