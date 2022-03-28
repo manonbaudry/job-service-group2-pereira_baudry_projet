@@ -37,9 +37,8 @@ module Job (JobRepository : Repository.JOB) = struct
     | Error e -> Lwt.return_error @@ "Invalid email: " ^ contact_email
     | Ok email ->
       let open Lwt in
-      let id = D.Uuid.v4_gen E.random_seed ()
-      and ranking = "0.0" in
-      JobRepository.create ~id ~title ~company ~city ~job_description ~company_description ~created_at ~end_date ~contact_email:email ~contract_type ~duration ~ranking connection
+      let id = D.Uuid.v4_gen E.random_seed () in
+      JobRepository.create ~id ~title ~company ~city ~job_description ~company_description ~created_at ~end_date ~contact_email:email ~contract_type ~duration connection
       >>= function
       | Ok db_result -> Lwt.return_ok ()
       | Error _ -> Lwt.return_error "Unable to create the job offer"
@@ -71,8 +70,7 @@ module Job (JobRepository : Repository.JOB) = struct
       | Error e -> Lwt.return_error @@ "Invalid id: " ^ id
       | Ok job_id ->
         let open Lwt in
-        let ranking = "0.0" in 
-        JobRepository.update ~id:job_id ~title ~company ~city ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration ~ranking  connection
+        JobRepository.update ~id:job_id ~title ~company ~city ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration  connection
         >>= function
         | Ok db_result -> Lwt.return_ok ()
         | Error _ -> Lwt.return_error "Unable to update the job"

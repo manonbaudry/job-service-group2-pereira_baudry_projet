@@ -12,5 +12,5 @@ CREATE TABLE "Job"
     contract_type TEXT NOT NULL,
     duration TEXT NOT NULL, 
     is_deleted BOOLEAN,
-    ranking TEXT NOT NULL
+    ranking REAL NOT NULL
 );
