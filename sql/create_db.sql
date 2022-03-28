@@ -3,6 +3,7 @@ CREATE TABLE "Job"
     id UUID PRIMARY KEY NOT NULL,
     title TEXT NOT NULL,
     company TEXT NOT NULL,
+    city TEXT NOT NULL,
     job_description TEXT NOT NULL,
     company_description TEXT NOT NULL,
     created_at TEXT NOT NULL,

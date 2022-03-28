@@ -34,6 +34,7 @@ let create_handler request =
       | Ok json ->
         let title = json |> member "title" |> to_string
         and company = json |> member "company" |> to_string 
+        and city = json |> member "city" |> to_string 
         and job_description = json |> member "job_description" |> to_string 
         and company_description = json |> member "company_description" |> to_string
         and created_at = json |> member "created_at" |> to_string  
@@ -42,7 +43,7 @@ let create_handler request =
         and contract_type = json |> member "contract_type" |> to_string  
         and duration = json |> member "duration" |> to_string in
         let* update_result = 
-          Dream.sql request @@ JobService.create ~title ~company ~job_description ~company_description ~created_at ~end_date ~contact_email ~contract_type ~duration in
+          Dream.sql request @@ JobService.create ~title ~company ~city ~job_description ~company_description ~created_at ~end_date ~contact_email ~contract_type ~duration in
         match update_result with
         | Error e -> Dream.json ~status:`Forbidden e
         | Ok _ -> Dream.json ~status:`OK ""
@@ -67,7 +68,7 @@ let get_by_id_handler request =
  
       
 (** get job by city route *)
-(*let get_by_city_handler request =
+let get_by_city_handler request =
   let () = debug "Call get_by_city_handler" in
   let open Yojson.Safe in
   let open LwtSyntax in
@@ -75,7 +76,7 @@ let get_by_id_handler request =
   let* get_by_city_result = Dream.sql request @@ JobService.get_by_city ~city in
   match get_by_city_result with
   | Error e -> Dream.json ~status:`Forbidden e
-  | Ok jobs -> Dream.json ~status:`OK jobs*)
+  | Ok jobs -> Dream.json ~status:`OK (String.concat "" (List.map (fun o -> Domain.Job.show o) jobs ))
       
       
 (** update job route *)
@@ -99,6 +100,7 @@ let update_handler request =
       | Ok json ->
         let title = json |> member "title" |> to_string
         and company = json |> member "company" |> to_string 
+        and city = json |> member "city" |> to_string 
         and job_description = json |> member "job_description" |> to_string 
         and company_description = json |> member "company_description" |> to_string 
         and end_date = json |> member "end_date" |> to_string 
@@ -106,7 +108,7 @@ let update_handler request =
         and contract_type = json |> member "contract_type" |> to_string  
         and duration = json |> member "duration" |> to_string in
         let* update_result = 
-          Dream.sql request @@ JobService.update ~id ~title ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration in
+          Dream.sql request @@ JobService.update ~id ~title ~company ~city ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration in
         match update_result with
         | Error e -> Dream.json ~status:`Forbidden e
         | Ok _ -> Dream.json ~status:`OK ""
@@ -138,5 +140,5 @@ let routes =
     Dream.get "/job/:id" get_by_id_handler;
     Dream.put "/job/:id" update_handler;
     Dream.delete "/job/:id" delete_handler;
-    (*Dream.get "jobs/:city" get_by_city_handler;*)
+    Dream.get "jobs/:city" get_by_city_handler;
   ]      

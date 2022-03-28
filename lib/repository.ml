@@ -14,10 +14,16 @@ module type JOB = sig
   (module Rapper_helper.CONNECTION) ->
   (D.Job.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
 
+  val get_by_city :
+  city: string ->
+  (module Rapper_helper.CONNECTION) ->
+  (D.Job.t list, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
+
   val create :
     id:D.Uuid.t ->
     title: string ->
     company: string ->
+    city: string ->
     job_description: string ->
     company_description: string ->
     created_at: string ->
@@ -32,6 +38,7 @@ module type JOB = sig
   val update :
     title: string ->
     company: string ->
+    city: string ->
     job_description: string ->
     company_description: string ->
     end_date: string ->
@@ -87,7 +94,7 @@ module Job : JOB = struct
       [%rapper
         get_one
           {sql| 
-            SELECT @Uuid{id}, @string{title}, @string{company}, @string{job_description}, 
+            SELECT @Uuid{id}, @string{title}, @string{company}, @string{city}, @string{job_description}, 
               @string{company_description}, @string{created_at}, @string{end_date}, @Email{contact_email},
               @string{contract_type}, @string{duration}, @string{ranking}, @bool{is_deleted}
             FROM "Job" 
@@ -95,13 +102,26 @@ module Job : JOB = struct
           |sql} 
           record_out]
       
+    let get_by_city_query = 
+      let open D.Job in
+      [%rapper
+        get_many
+          {sql| 
+            SELECT @Uuid{id}, @string{title}, @string{company}, @string{city}, @string{job_description}, 
+              @string{company_description}, @string{created_at}, @string{end_date}, @Email{contact_email},
+              @string{contract_type}, @string{duration}, @string{ranking}, @bool{is_deleted}
+            FROM "Job" 
+            WHERE city = %string{city}
+          |sql} 
+          record_out]
+
     let create_query =
       [%rapper
         execute
           {sql|
-            INSERT INTO "Job" (id, title, company, job_description, company_description, 
+            INSERT INTO "Job" (id, title, company, city, job_description, company_description, 
             created_at, end_date, contact_email, contract_type, duration, ranking, is_deleted) 
-            VALUES  (%Uuid{id}, %string{title}, %string{company}, %string{job_description}, 
+            VALUES  (%Uuid{id}, %string{title}, %string{company}, %string{city}, %string{job_description}, 
               %string{company_description}, %string{created_at}, %string{end_date}, %Email{contact_email},
               %string{contract_type}, %string{duration}, %string{ranking}, FALSE)
           |sql}]
@@ -111,9 +131,9 @@ module Job : JOB = struct
         execute
           {sql|
             UPDATE "Job"
-            SET (title, company, job_description, company_description, 
+            SET (title, company, city, job_description, company_description, 
               end_date, contact_email, contract_type, duration, ranking) = 
-              (%string{title}, %string{company}, %string{job_description}, 
+              (%string{title}, %string{company}, %string{city}, %string{job_description}, 
               %string{company_description}, %string{end_date}, %Email{contact_email},
               %string{contract_type}, %string{duration}, %string{ranking})
             WHERE id = %Uuid{id}
@@ -127,6 +147,7 @@ module Job : JOB = struct
     
 
   let get_by_id = get_by_id_query
+  let get_by_city = get_by_city_query
   let create = create_query
   let update = update_query
   let delete = delete_query

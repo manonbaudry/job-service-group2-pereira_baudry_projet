@@ -66,6 +66,7 @@ module Job : sig
     id : Uuid.t;
     title : string;
     company : string;
+    city : string;
     job_description : string;
     company_description : string;
     created_at : string;
@@ -81,6 +82,7 @@ module Job : sig
   val id : t -> Uuid.t
   val title : t -> string
   val company : t -> string
+  val city : t -> string
   val job_description : t -> string
   val company_description : t -> string
   val created_at : t -> string
@@ -95,6 +97,7 @@ end = struct
     id : Uuid.t;
     title : string;
     company : string;
+    city : string;
     job_description : string;
     company_description : string;
     created_at : string;
@@ -110,6 +113,7 @@ end = struct
   let id job = job.id
   let title job = job.title
   let company job = job.company
+  let city job = job.city
   let job_description job = job.job_description
   let company_description job = job.company_description
   let created_at job = job.created_at
