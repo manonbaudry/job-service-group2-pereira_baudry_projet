@@ -61,40 +61,10 @@ end = struct
   let show u = to_string u
 end
 
-module Member : sig
-  type t = {
-    id : Uuid.t;
-    username : string option;
-    email : Email.t;
-    hash : Hash.t;
-  }
-  [@@deriving make, show]
-
-  val id : t -> Uuid.t
-  val username : t -> string option
-  val email : t -> Email.t
-  val hash : t -> Hash.t
-end = struct
-  type t = {
-    id : Uuid.t;
-    username : string option;
-    email : Email.t;
-    hash : Hash.t;
-  }
-  [@@deriving make, show]
-
-  let id member = member.id
-  let username member = member.username
-  let email member = member.email
-  let hash member = member.hash
-end
-
-
 module Job : sig
   type t = {
     id : Uuid.t;
     title : string;
-    description : string;
     company : string;
     job_description : string;
     company_description : string;
@@ -102,15 +72,14 @@ module Job : sig
     end_date : string;
     contact_email : Email.t;
     contract_type : string;
-    duration : int; 
+    duration : string; 
     is_deleted : bool;
-    ranking : float;
+    ranking : string;
   }
   [@@deriving make, show]
 
   val id : t -> Uuid.t
   val title : t -> string
-  val description : t -> string
   val company : t -> string
   val job_description : t -> string
   val company_description : t -> string
@@ -118,14 +87,13 @@ module Job : sig
   val end_date : t -> string
   val contact_email : t -> Email.t
   val contract_type : t -> string
-  val duration : t -> int
+  val duration : t -> string
   val is_deleted : t -> bool
-  val ranking : t -> float
+  val ranking : t -> string
 end = struct
   type t = {
     id : Uuid.t;
     title : string;
-    description : string;
     company : string;
     job_description : string;
     company_description : string;
@@ -133,15 +101,14 @@ end = struct
     end_date : string;
     contact_email : Email.t;
     contract_type : string;
-    duration : int; 
+    duration : string; 
     is_deleted : bool;
-    ranking : float;
+    ranking : string;
   }
   [@@deriving make, show]
 
   let id job = job.id
   let title job = job.title
-  let description job = job.description
   let company job = job.company
   let job_description job = job.job_description
   let company_description job = job.company_description

@@ -32,15 +32,14 @@ end
       
 module Job (JobRepository : Repository.JOB) = struct
   
-  let create ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
+  let create ~title ~company ~job_description ~company_description ~created_at ~end_date ~contact_email ~contract_type ~duration connection =
     match D.Email.make contact_email with
     | Error e -> Lwt.return_error @@ "Invalid email: " ^ contact_email
     | Ok email ->
       let open Lwt in
       let id = D.Uuid.v4_gen E.random_seed ()
-      and created_at = "28/03/2022" 
-      and ranking = 0.0 in
-      JobRepository.create ~id ~title ~description ~company ~job_description ~company_description ~created_at ~end_date ~contact_email:email ~contract_type ~duration ~ranking connection
+      and ranking = "0.0" in
+      JobRepository.create ~id ~title ~company ~job_description ~company_description ~created_at ~end_date ~contact_email:email ~contract_type ~duration ~ranking connection
       >>= function
       | Ok db_result -> Lwt.return_ok ()
       | Error _ -> Lwt.return_error "Unable to create the job offer"
@@ -55,9 +54,16 @@ module Job (JobRepository : Repository.JOB) = struct
       >>= function
       | Ok db_result -> Lwt.return_ok (D.Job.show db_result)
       | Error _ -> Lwt.return_error "Unable to retrive a job from this id"
+
+  (*let get_by_city ~city connection =
+    let open Lwt in
+    JobRepository.get_by_city ~city connection
+    >>= function
+    | Ok db_result -> Lwt.return_ok (D.Job.show db_result)
+    | Error _ -> Lwt.return_error "Unable to retrive a job from this id"*)
       
       
-  let update ~id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
+  let update ~id ~title ~company ~job_description ~company_description ~end_date ~contact_email ~contract_type ~duration connection =
     match D.Email.make contact_email with
     | Error e -> Lwt.return_error @@ "Invalid email: " ^ contact_email
     | Ok email ->
@@ -65,8 +71,8 @@ module Job (JobRepository : Repository.JOB) = struct
       | Error e -> Lwt.return_error @@ "Invalid id: " ^ id
       | Ok job_id ->
         let open Lwt in
-        let ranking = 0.0 in 
-        JobRepository.update ~id:job_id ~title ~description ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration ~ranking  connection
+        let ranking = "0.0" in 
+        JobRepository.update ~id:job_id ~title ~company ~job_description ~company_description ~end_date ~contact_email:email ~contract_type ~duration ~ranking  connection
         >>= function
         | Ok db_result -> Lwt.return_ok ()
         | Error _ -> Lwt.return_error "Unable to update the job"

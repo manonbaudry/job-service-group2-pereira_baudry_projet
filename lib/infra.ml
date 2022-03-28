@@ -31,7 +31,7 @@ module Environment = struct
         Log.warn
           "PORT environment variable is not properly set, fallback default \
            value 8080" in
-      3000
+      3001
 
   let hash_seed =
     try Unix.getenv "SEED" with

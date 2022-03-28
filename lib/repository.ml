@@ -17,7 +17,6 @@ module type JOB = sig
   val create :
     id:D.Uuid.t ->
     title: string ->
-    description: string ->
     company: string ->
     job_description: string ->
     company_description: string ->
@@ -25,23 +24,22 @@ module type JOB = sig
     end_date: string ->
     contact_email: D.Email.t ->
     contract_type: string ->
-    duration: int ->
-    ranking: float ->
+    duration: string ->
+    ranking: string ->
     (module Rapper_helper.CONNECTION) ->
     (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
 
   val update :
-    id:D.Uuid.t ->
     title: string ->
-    description: string ->
     company: string ->
     job_description: string ->
     company_description: string ->
     end_date: string ->
     contact_email: D.Email.t ->
     contract_type: string ->
-    duration: int ->
-    ranking: float ->
+    duration: string ->
+    ranking: string ->
+    id:D.Uuid.t ->
     (module Rapper_helper.CONNECTION) ->
     (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
       
@@ -89,9 +87,9 @@ module Job : JOB = struct
       [%rapper
         get_one
           {sql| 
-            SELECT @Uuid{id}, @string{title}, @string{description}, @string{company}, @string{job_description}, 
+            SELECT @Uuid{id}, @string{title}, @string{company}, @string{job_description}, 
               @string{company_description}, @string{created_at}, @string{end_date}, @Email{contact_email},
-              @string{contract_type}, @int{duration}, @float{ranking}, @bool{is_deleted}
+              @string{contract_type}, @string{duration}, @string{ranking}, @bool{is_deleted}
             FROM "Job" 
             WHERE id = %Uuid{id}
           |sql} 
@@ -101,11 +99,11 @@ module Job : JOB = struct
       [%rapper
         execute
           {sql|
-            INSERT INTO "Job" (id, title, description, company, job_description, company_description, 
+            INSERT INTO "Job" (id, title, company, job_description, company_description, 
             created_at, end_date, contact_email, contract_type, duration, ranking, is_deleted) 
-            VALUES  (%Uuid{id}, %string{title}, %string{description}, %string{company}, %string{job_description}, 
+            VALUES  (%Uuid{id}, %string{title}, %string{company}, %string{job_description}, 
               %string{company_description}, %string{created_at}, %string{end_date}, %Email{contact_email},
-              %string{contract_type}, %int{duration}, %float{ranking}, FALSE)
+              %string{contract_type}, %string{duration}, %string{ranking}, FALSE)
           |sql}]
       
     let update_query =
@@ -113,11 +111,11 @@ module Job : JOB = struct
         execute
           {sql|
             UPDATE "Job"
-            SET (title, description, company, job_description, company_description, 
+            SET (title, company, job_description, company_description, 
               end_date, contact_email, contract_type, duration, ranking) = 
-              (%Uuid{id}, %string{title}, %string{description}, %string{company}, %string{job_description}, 
+              (%string{title}, %string{company}, %string{job_description}, 
               %string{company_description}, %string{end_date}, %Email{contact_email},
-              %string{contract_type}, %int{duration}, %float{ranking})
+              %string{contract_type}, %string{duration}, %string{ranking})
             WHERE id = %Uuid{id}
           |sql}]
       

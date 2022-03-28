@@ -5,11 +5,11 @@ CREATE TABLE "Job"
     company TEXT NOT NULL,
     job_description TEXT NOT NULL,
     company_description TEXT NOT NULL,
-    created_at DATE NOT NULL,
-    end_date DATE NOT NULL,
+    created_at TEXT NOT NULL,
+    end_date TEXT NOT NULL,
     contact_email TEXT NOT NULL,
     contract_type TEXT NOT NULL,
-    duration NUMBER NOT NULL, 
+    duration TEXT NOT NULL, 
     is_deleted BOOLEAN,
-    ranking NUMBER
-)
+    ranking TEXT NOT NULL
+);
