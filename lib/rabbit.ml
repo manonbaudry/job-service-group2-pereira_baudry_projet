@@ -2,7 +2,7 @@ open Util
 open Amqp_client_lwt
 open Infra.Log
 
-let host = "parrow-01.rmq.cloudamqp.com"
+let host = "sparrow-01.rmq.cloudamqp.com"
 
 let credentials = ("pymgrgko", "1rBW0EAK9jf1IGMVKnKJcy5N_daFPPBZ")
 
@@ -34,5 +34,5 @@ let from_message (msg : Message.message option) =
 
 
  let init_client () = let open LwtSyntax in let* connection = get_connection
- () in let* c = Rpc.Client.init ~id:"rpc" connection in let _ = client
+ () in let* c = Rpc.Client.init ~id:"auth-job" connection in let _ = client
     := Some c in Lwt.return c
